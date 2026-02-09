@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notre journée du 14 février ❤️</title>
+  <style>
+    :root{
+      --bg1:#ff9a9e;
+      --bg2:#fad0c4;
+      --card:#ffffffee;
+      --text:#1f1f1f;
+      --pink:#ff3b6b;
+      --shadow: 0 18px 45px rgba(0,0,0,0.18);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background: linear-gradient(120deg,var(--bg1),var(--bg2));
+      padding:24px;
+      overflow-x:hidden;
+    }
+    .wrap{
+      width:min(820px, 95vw);
+      margin:18px auto 50px;
+      position:relative;
+    }
+    .card{
+      background:var(--card);
+      border-radius:22px;
+      padding:28px 22px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+      position:relative;
+      overflow:hidden;
+    }
+    .top{
+      text-align:center;
+      padding:8px 8px 18px;
+    }
+    .badge{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,59,107,0.12);
+      color: var(--pink);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size: clamp(26px, 3.6vw, 40px);
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      opacity:.88;
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height:1.5;
+    }
+
+    .grid{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+    @media (min-width: 780px){
+      .grid{ grid-template-columns: 1.2fr .8fr; }
+    }
+
+    .panel{
+      background: rgba(255,255,255,0.75);
+      border-radius:18px;
+      padding:16px 14px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .panel h2{
+      margin:0 0 10px;
+      font-size:18px;
+      color: var(--pink);
+    }
+    .panel p{
+      margin:8px 0 0;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:12px;
+    }
+    .step{
+      display:grid;
+      grid-template-columns: 92px 1fr;
+      gap:12px;
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,59,107,0.06);
+      border: 1px solid rgba(255,59,107,0.18);
+    }
+    .time{
+      font-weight:800;
+      color:#111;
+      font-size:14px;
+      line-height:1.2;
+    }
+    .place{
+      font-weight:800;
+      color:#111;
+      margin:0;
+      font-size:15px;
+    }
+    .desc{
+      margin:6px 0 0;
+      font-size:14px;
+      opacity:.92;
+      line-height:1.55;
+    }
+    .mini{
+      margin-top:8px;
+      font-size:13px;
+      opacity:.85;
+    }
+
+    details{
+      background: rgba(0,0,0,0.03);
+      border-radius:16px;
+      padding:12px 12px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:800;
+      color:#111;
+      padding:4px 2px;
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    .note{
+      margin:10px 2px 2px;
+      font-size:14px;
+      line-height:1.6;
+      opacity:.92;
+    }
+
+    .check{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
+    .check label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size:14px;
+      line-height:1.5;
+    }
+    .check input{
+      margin-top:2px;
+      transform: scale(1.1);
+      accent-color: var(--pink);
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:18px;
+      font-size:13px;
+      opacity:.85;
+    }
+
+    /* petits cœurs en fond */
+    .hearts{
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+    }
+    .heart{
+      position:absolute;
+      width:14px; height:14px;
+      transform: rotate(45deg);
+      opacity:.35;
+      animation: floatUp linear forwards;
+      background: rgba(255,255,255,0.9);
+      border-radius: 4px;
+    }
+    .heart::before, .heart::after{
+      content:"";
+      position:absolute;
+      width:14px; height:14px;
+      background: inherit;
+      border-radius:50%;
+    }
+    .heart::before{ left:-7px; top:0; }
+    .heart::after{ top:-7px; left:0; }
+    @keyframes floatUp{
+      from{ transform: translateY(20vh) rotate(45deg); }
+      to{ transform: translateY(-120vh) rotate(45deg); }
+    }
+
+    .btn{
+      display:inline-block;
+      border:none;
+      border-radius:14px;
+      padding:12px 16px;
+      font-size:14px;
+      cursor:pointer;
+      background: var(--pink);
+      color:#fff;
+      margin-top:10px;
+    }
+    .btn:active{ transform: scale(0.99); }
+
+    .small{
+      font-size:12px;
+      opacity:.8;
+      margin-top:6px;
+    }
+
+    .quote{
+      margin-top:14px;
+      padding:14px 14px;
+      border-radius:18px;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.06);
+      font-style: italic;
+      line-height:1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <span class="badge">💌 Programme officiel – 14 février</span>
+        <h1>Lana ❤️</h1>
+        <p class="subtitle">
+          Tu as dit oui… alors je te dévoile notre journée.
+          Rien de “trop chargé” : juste du <strong>temps de qualité</strong>, de la détente,
+          et un bon repas — le tout avec toi.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- Colonne gauche : timeline -->
+        <div class="panel">
+          <h2>⏳ Le déroulé (simple & parfait)</h2>
+
+          <div class="timeline">
+            <div class="step">
+              <div class="time">10h00<br><span class="mini">→ 13h00</span></div>
+              <div>
+                <p class="place">Calicéo – Cormeilles-en-Parisis 🧖‍♀️</p>
+                <p class="desc">
+                  On commence par une vraie bulle : bains chauds, jacuzzis, détente.
+                  Objectif : se poser, respirer, et profiter l’un de l’autre sans stress.
+                </p>
+                <p class="mini">🧴 Conseil : prends un maillot + une serviette (ou peignoir si tu veux être cosy).</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="time">13h00<br><span class="mini">→ 14h15</span></div>
+              <div>
+                <p class="place">Trajet & transition 🚆</p>
+                <p class="desc">
+                  On rentre vers Paris tranquillement. C’est le “moment calme” :
+                  on discute, on rigole, on se repose — et on garde l’ambiance du spa.
+                </p>
+                <p class="mini">💡 Pas de course : on garde un rythme doux.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="time">14h30</div>
+              <div>
+                <p class="place">La Felicità (Paris 13) 🍝</p>
+                <p class="desc">
+                  Gros spot italien, ultra chaleureux : plein d’odeurs de cuisine,
+                  de vie, et une ambiance “petit voyage” sans quitter Paris.
+                  On mange bien, on prend notre temps, et on profite.
+                </p>
+                <p class="mini">🍮 Option : dessert obligatoire (c’est la règle du 14 février).</p>
+              </div>
+            </div>
+
+            <div class="quote">
+              “Le programme est simple… parce que le meilleur, c’est juste d’être ensemble.”
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite : détails + checklist -->
+        <div class="panel">
+          <h2>✨ Détails & petites attentions</h2>
+
+          <details open>
+            <summary>Calicéo — à quoi s’attendre</summary>
+            <p class="note">
+              Une parenthèse où on se laisse porter : eau chaude, détente musculaire,
+              ambiance calme. On fait zéro performance, zéro objectif : juste “bien”.
+            </p>
+          </details>
+
+          <details>
+            <summary>La Felicità — l’ambiance</summary>
+            <p class="note">
+              Un grand lieu italien vivant mais cozy, parfait pour se poser après le spa.
+              On se balade, on choisit ce qui nous fait envie, on partage si on veut,
+              et on prend le temps.
+            </p>
+          </details>
+
+          <details>
+            <summary>Le trajet — comment ça se passe</summary>
+            <p class="note">
+              On fait simple : on part de Calicéo, on rejoint la gare tranquillement,
+              puis direction Paris. Le trajet fait partie de la journée :
+              musique, discussion, petites photos… sans pression.
+            </p>
+          </details>
+
+          <h2 style="margin-top:14px;">✅ Mini checklist (pour être confort)</h2>
+          <div class="check">
+            <label><input type="checkbox"> Maillot de bain + sous-vêtements de rechange</label>
+            <label><input type="checkbox"> Serviette / peignoir (option cosy)</label>
+            <label><input type="checkbox"> Crème / démaquillant / élastique (si tu veux)</label>
+            <label><input type="checkbox"> Téléphone chargé (pour les photos + notre “moment”)</label>
+            <label><input type="checkbox"> Juste… ton plus beau sourire 😌</label>
+          </div>
+
+          <button class="btn" id="surpriseBtn" type="button">💖 Petit message</button>
+          <div class="small" id="surpriseText"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        PS : Si tu as une envie (dessert, boisson, petit détour), tu me le dis — cette journée est pour nous.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Cœurs en fond ---
+    const heartsContainer = document.querySelector(".hearts");
+    function spawnHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.bottom = (-10 - Math.random() * 20) + "vh";
+      h.style.opacity = (0.15 + Math.random() * 0.35).toFixed(2);
+      h.style.animationDuration = (6 + Math.random() * 7).toFixed(2) + "s";
+      h.style.transform = `rotate(45deg) scale(${(0.7 + Math.random() * 1.4).toFixed(2)})`;
+      heartsContainer.appendChild(h);
+      setTimeout(() => h.remove(), 14000);
+    }
+    setInterval(spawnHeart, 550);
+
+    // --- Petit message (sans inventer d’activité) ---
+    const messages = [
+      "J’ai hâte de te voir relaxer et sourire. C’est tout ce que je veux ❤️",
+      "Le 14, je veux juste qu’on soit bien. Le reste, on s’en fiche ✨",
+      "Promis : zéro stress, zéro course… juste nous deux 😌",
+      "Je veux te faire passer une journée douce, simple et mémorable ❤️"
+    ];
+    const btn = document.getElementById("surpriseBtn");
+    const out = document.getElementById("surpriseText");
+    let k = 0;
+    btn.addEventListener("click", () => {
+      out.textContent = messages[k];
+      k = (k + 1) % messages.length;
+    });
+  </script>
+</body>
+</html>
