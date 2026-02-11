@@ -1,49 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre journée du 14 février ❤️</title>
+
+<style>
+:root{
+  --bg1:#ff9a9e;
+  --bg2:#fad0c4;
+  --card:#ffffffee;
+  --pink:#ff3b6b;
+}
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(120deg,var(--bg1),var(--bg2));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.card{
+  background:var(--card);
+  padding:40px;
+  border-radius:20px;
+  width:700px;
+  max-width:95%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+  text-align:center;
+  color:var(--pink);
+}
+
+.timeline{
+  margin-top:30px;
+}
+
+.step{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:15px;
+  margin-bottom:20px;
+  background:#fff0f3;
+  padding:15px;
+  border-radius:12px;
+}
+
+.time{
+  font-weight:bold;
+  color:#333;
+}
+
+.place{
+  font-weight:bold;
+  font-size:18px;
+  color:#111;
+}
+
+.desc{
+  margin-top:5px;
+  line-height:1.5;
+}
+
+.quote{
+  margin-top:20px;
+  font-style:italic;
+  text-align:center;
+}
+
+button{
+  margin-top:20px;
+  background:#ff3b6b;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.small{
+  margin-top:10px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Lana ❤️</h1>
+<p style="text-align:center">Notre programme du 14 février</p>
+
 <div class="timeline">
 
-  <!-- RESTAURANT -->
-  <div class="step">
-    <div class="time">12h00<br><span class="mini">→ 14h00</span></div>
-    <div>
-      <p class="place">La Felicità (Paris 13) 🍝</p>
-      <p class="desc">
-        On commence la journée par un déjeuner dans une ambiance italienne
-        chaleureuse. On choisit tranquillement ce qui nous fait envie,
-        on se pose et on profite simplement du moment.
-      </p>
-      <p class="mini">🍮 Dessert recommandé (règle officielle du 14 février).</p>
-    </div>
-  </div>
+<div class="step">
+<div class="time">12h00 → 14h00</div>
+<div>
+<div class="place">La Felicità (Paris 13) 🍝</div>
+<div class="desc">
+On commence la journée par un déjeuner italien dans une ambiance chaleureuse.
+On prend notre temps, on choisit ce qui nous fait envie et on profite simplement du moment.
+</div>
+</div>
+</div>
 
-  <!-- TRAJET -->
-  <div class="step">
-    <div class="time">14h00<br><span class="mini">→ 15h00</span></div>
-    <div>
-      <p class="place">Trajet vers Cormeilles-en-Parisis 🚆</p>
-      <p class="desc">
-        Après le repas, nous prenons tranquillement la direction du spa.
-        Un moment calme pour discuter, écouter de la musique et prolonger
-        la journée ensemble.
-      </p>
-      <p class="mini">💡 Pas de course : on garde un rythme détendu.</p>
-    </div>
-  </div>
+<div class="step">
+<div class="time">14h00 → 15h00</div>
+<div>
+<div class="place">Trajet vers Cormeilles 🚆</div>
+<div class="desc">
+Après le repas, nous partons tranquillement vers le spa, un moment calme pour discuter
+et profiter encore un peu du trajet ensemble.
+</div>
+</div>
+</div>
 
-  <!-- SPA -->
-  <div class="step">
-    <div class="time">15h00<br><span class="mini">→ 18h00</span></div>
-    <div>
-      <p class="place">Calicéo – Cormeilles-en-Parisis 🧖‍♀️</p>
-      <p class="desc">
-        On termine la journée par trois heures de détente complète :
-        bains chauds, jacuzzis et relaxation pour finir cette journée
-        dans une ambiance calme et reposante.
-      </p>
-      <p class="mini">🧴 Maillot + serviette recommandés.</p>
-    </div>
-  </div>
+<div class="step">
+<div class="time">15h00 → 18h00</div>
+<div>
+<div class="place">Spa Calicéo 🧖‍♀️</div>
+<div class="desc">
+Trois heures de détente complète : bains chauds, jacuzzis et relaxation pour terminer
+cette journée dans une ambiance calme et reposante.
+</div>
+</div>
+</div>
 
-  <div class="quote">
-    “Une journée simple, douce… et entièrement pour nous.”
-  </div>
+<div class="quote">
+“Une journée simple, douce… et entièrement pour nous.”
+</div>
 
 </div>
+
+<button id="msgBtn">💖 Petit message</button>
+<div class="small" id="msg"></div>
+
+</div>
+
+<script>
+const messages = [
+"J’ai hâte de vivre cette journée avec toi ❤️",
+"Le plus important ce jour-là, c’est juste nous deux ✨",
+"Promis : zéro stress, juste du bon temps ensemble 😌",
+"Cette journée est entièrement pour nous ❤️"
+];
+
+let i = 0;
+document.getElementById("msgBtn").onclick = () => {
+document.getElementById("msg").innerText = messages[i];
+i = (i+1) % messages.length;
+};
+</script>
+
+</body>
+</html>
