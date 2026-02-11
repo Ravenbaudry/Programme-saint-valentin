@@ -11,32 +11,101 @@
   --bg2:#fad0c4;
   --card:#ffffffee;
   --pink:#ff3b6b;
+  --shadow: 0 18px 45px rgba(0,0,0,0.18);
 }
+
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, system-ui, -apple-system, Segoe UI, Roboto;
   background:linear-gradient(120deg,var(--bg1),var(--bg2));
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:100vh;
+  overflow:hidden; /* pour cacher les cœurs qui sortent de l’écran */
 }
 
+/* ====== FOND COEURS ====== */
+.hearts{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+.heart{
+  position:absolute;
+  width:14px;
+  height:14px;
+  transform: rotate(45deg);
+  opacity:.35;
+  animation: floatUp linear forwards;
+  background: rgba(255,255,255,0.9);
+  border-radius: 4px;
+}
+
+.heart::before, .heart::after{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  background: inherit;
+  border-radius:50%;
+}
+
+.heart::before{ left:-7px; top:0; }
+.heart::after{ top:-7px; left:0; }
+
+@keyframes floatUp{
+  from{ transform: translateY(20vh) rotate(45deg); }
+  to{ transform: translateY(-120vh) rotate(45deg); }
+}
+
+/* ====== CARD ====== */
 .card{
+  position:relative;
+  z-index:1;
   background:var(--card);
   padding:40px;
   border-radius:20px;
   width:700px;
   max-width:95%;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* ====== ANIMATIONS D’APPARITION ====== */
+.fade-up{
+  opacity:0;
+  transform: translateY(14px);
+  animation: fadeUp .7s ease forwards;
+}
+
+.delay-1{ animation-delay: .05s; }
+.delay-2{ animation-delay: .18s; }
+.delay-3{ animation-delay: .30s; }
+.delay-4{ animation-delay: .42s; }
+.delay-5{ animation-delay: .54s; }
+
+@keyframes fadeUp{
+  to{ opacity:1; transform: translateY(0); }
 }
 
 h1{
   text-align:center;
   color:var(--pink);
+  margin:0;
 }
 
+.subtitle{
+  text-align:center;
+  margin:10px 0 0;
+  opacity:.9;
+}
+
+/* ====== TIMELINE ====== */
 .timeline{
   margin-top:30px;
 }
@@ -71,90 +140,122 @@ h1{
   margin-top:20px;
   font-style:italic;
   text-align:center;
+  opacity:.95;
 }
 
 button{
   margin-top:20px;
-  background:#ff3b6b;
+  background:var(--pink);
   color:white;
   border:none;
   padding:12px 20px;
   border-radius:10px;
   cursor:pointer;
+  transition: transform .08s ease, filter .2s ease;
 }
+
+button:active{ transform: scale(0.99); }
+button:hover{ filter: brightness(1.03); }
 
 .small{
   margin-top:10px;
   font-size:14px;
+  min-height: 20px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Fond coeurs -->
+<div class="hearts" aria-hidden="true"></div>
+
 <div class="card">
-<h1>Lana ❤️</h1>
-<p style="text-align:center">Notre programme du 14 février</p>
+  <h1 class="fade-up delay-1">Lana ❤️</h1>
+  <p class="subtitle fade-up delay-2">Notre programme du 14 février</p>
 
-<div class="timeline">
+  <div class="timeline">
 
-<div class="step">
-<div class="time">12h00 → 14h00</div>
-<div>
-<div class="place">La Felicità (Paris 13) 🍝</div>
-<div class="desc">
-On commence la journée par un déjeuner italien dans une ambiance chaleureuse.
-On prend notre temps, on choisit ce qui nous fait envie et on profite simplement du moment.
-</div>
-</div>
-</div>
+    <div class="step fade-up delay-3">
+      <div class="time">12h00 → 14h00</div>
+      <div>
+        <div class="place">La Felicità (Paris 13) 🍝</div>
+        <div class="desc">
+          On commence la journée par un déjeuner italien dans une ambiance chaleureuse.
+          On prend notre temps, on choisit ce qui nous fait envie et on profite simplement du moment.
+        </div>
+      </div>
+    </div>
 
-<div class="step">
-<div class="time">14h00 → 15h00</div>
-<div>
-<div class="place">Trajet vers Cormeilles 🚆</div>
-<div class="desc">
-Après le repas, nous partons tranquillement vers le spa, un moment calme pour discuter
-et profiter encore un peu du trajet ensemble.
-</div>
-</div>
-</div>
+    <div class="step fade-up delay-4">
+      <div class="time">14h00 → 15h00</div>
+      <div>
+        <div class="place">Trajet vers Cormeilles 🚆</div>
+        <div class="desc">
+          Après le repas, nous partons tranquillement vers le spa, un moment calme pour discuter
+          et prolonger cette journée ensemble.
+        </div>
+      </div>
+    </div>
 
-<div class="step">
-<div class="time">15h00 → 18h00</div>
-<div>
-<div class="place">Spa Calicéo 🧖‍♀️</div>
-<div class="desc">
-Trois heures de détente complète : bains chauds, jacuzzis et relaxation pour terminer
-cette journée dans une ambiance calme et reposante.
-</div>
-</div>
-</div>
+    <div class="step fade-up delay-5">
+      <div class="time">15h00 → 18h00</div>
+      <div>
+        <div class="place">Spa Calicéo 🧖‍♀️</div>
+        <div class="desc">
+          Trois heures de détente complète : bains chauds, jacuzzis et relaxation pour terminer
+          cette journée dans une ambiance calme et reposante.
+        </div>
+      </div>
+    </div>
 
-<div class="quote">
-“Une journée simple, douce… et entièrement pour nous.”
-</div>
+    <div class="quote fade-up" style="animation-delay:.66s;">
+      “Une journée simple, douce… et entièrement pour nous.”
+    </div>
 
-</div>
+  </div>
 
-<button id="msgBtn">💖 Petit message</button>
-<div class="small" id="msg"></div>
-
+  <button id="msgBtn" class="fade-up" style="animation-delay:.78s;">💖 Petit message</button>
+  <div class="small fade-up" id="msg" style="animation-delay:.90s;"></div>
 </div>
 
 <script>
+// ====== Messages ======
 const messages = [
-"J’ai hâte de vivre cette journée avec toi ❤️",
-"Le plus important ce jour-là, c’est juste nous deux ✨",
-"Promis : zéro stress, juste du bon temps ensemble 😌",
-"Cette journée est entièrement pour nous ❤️"
+  "J’ai hâte de vivre cette journée avec toi ❤️",
+  "Le plus important ce jour-là, c’est juste nous deux ✨",
+  "Promis : zéro stress, juste du bon temps ensemble 😌",
+  "Cette journée est entièrement pour nous ❤️"
 ];
 
 let i = 0;
-document.getElementById("msgBtn").onclick = () => {
-document.getElementById("msg").innerText = messages[i];
-i = (i+1) % messages.length;
-};
+document.getElementById("msgBtn").addEventListener("click", () => {
+  document.getElementById("msg").innerText = messages[i];
+  i = (i + 1) % messages.length;
+});
+
+// ====== Cœurs flottants en fond ======
+const heartsContainer = document.querySelector(".hearts");
+
+function spawnHeart(){
+  const h = document.createElement("div");
+  h.className = "heart";
+
+  // Position aléatoire
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.bottom = (-10 - Math.random() * 15) + "vh";
+
+  // Variations légères (discret)
+  h.style.opacity = (0.12 + Math.random() * 0.30).toFixed(2);
+  h.style.animationDuration = (6 + Math.random() * 7).toFixed(2) + "s";
+  h.style.transform = `rotate(45deg) scale(${(0.7 + Math.random() * 1.2).toFixed(2)})`;
+
+  heartsContainer.appendChild(h);
+  setTimeout(() => h.remove(), 14000);
+}
+
+// Flux léger (pas trop “kitsch”)
+setInterval(spawnHeart, 600);
 </script>
 
 </body>
