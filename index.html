@@ -1,240 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Notre journée du 14 février ❤️</title>
-  <style>
-    :root{
-      --bg1:#ff9a9e;
-      --bg2:#fad0c4;
-      --card:#ffffffee;
-      --text:#1f1f1f;
-      --pink:#ff3b6b;
-      --shadow: 0 18px 45px rgba(0,0,0,0.18);
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background: linear-gradient(120deg,var(--bg1),var(--bg2));
-      padding:24px;
-      overflow-x:hidden;
-    }
-    .wrap{
-      width:min(820px, 95vw);
-      margin:18px auto 50px;
-      position:relative;
-    }
-    .card{
-      background:var(--card);
-      border-radius:22px;
-      padding:28px 22px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(8px);
-      position:relative;
-      overflow:hidden;
-    }
-    .top{
-      text-align:center;
-      padding:8px 8px 18px;
-    }
-    .badge{
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(255,59,107,0.12);
-      color: var(--pink);
-      font-weight:700;
-      font-size:13px;
-      letter-spacing:.2px;
-    }
-    h1{
-      margin:14px 0 8px;
-      font-size: clamp(26px, 3.6vw, 40px);
-      letter-spacing:.2px;
-    }
-    .subtitle{
-      margin:0;
-      opacity:.88;
-      font-size: clamp(15px, 2.2vw, 18px);
-      line-height:1.5;
-    }
+<div class="timeline">
 
-    .grid{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-    @media (min-width: 780px){
-      .grid{ grid-template-columns: 1.2fr .8fr; }
-    }
+  <!-- RESTAURANT -->
+  <div class="step">
+    <div class="time">12h00<br><span class="mini">→ 14h00</span></div>
+    <div>
+      <p class="place">La Felicità (Paris 13) 🍝</p>
+      <p class="desc">
+        On commence la journée par un déjeuner dans une ambiance italienne
+        chaleureuse. On choisit tranquillement ce qui nous fait envie,
+        on se pose et on profite simplement du moment.
+      </p>
+      <p class="mini">🍮 Dessert recommandé (règle officielle du 14 février).</p>
+    </div>
+  </div>
 
-    .panel{
-      background: rgba(255,255,255,0.75);
-      border-radius:18px;
-      padding:16px 14px;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    .panel h2{
-      margin:0 0 10px;
-      font-size:18px;
-      color: var(--pink);
-    }
-    .panel p{
-      margin:8px 0 0;
-      line-height:1.65;
-      font-size:15px;
-    }
+  <!-- TRAJET -->
+  <div class="step">
+    <div class="time">14h00<br><span class="mini">→ 15h00</span></div>
+    <div>
+      <p class="place">Trajet vers Cormeilles-en-Parisis 🚆</p>
+      <p class="desc">
+        Après le repas, nous prenons tranquillement la direction du spa.
+        Un moment calme pour discuter, écouter de la musique et prolonger
+        la journée ensemble.
+      </p>
+      <p class="mini">💡 Pas de course : on garde un rythme détendu.</p>
+    </div>
+  </div>
 
-    .timeline{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:12px;
-    }
-    .step{
-      display:grid;
-      grid-template-columns: 92px 1fr;
-      gap:12px;
-      padding:12px;
-      border-radius:16px;
-      background: rgba(255,59,107,0.06);
-      border: 1px solid rgba(255,59,107,0.18);
-    }
-    .time{
-      font-weight:800;
-      color:#111;
-      font-size:14px;
-      line-height:1.2;
-    }
-    .place{
-      font-weight:800;
-      color:#111;
-      margin:0;
-      font-size:15px;
-    }
-    .desc{
-      margin:6px 0 0;
-      font-size:14px;
-      opacity:.92;
-      line-height:1.55;
-    }
-    .mini{
-      margin-top:8px;
-      font-size:13px;
-      opacity:.85;
-    }
+  <!-- SPA -->
+  <div class="step">
+    <div class="time">15h00<br><span class="mini">→ 18h00</span></div>
+    <div>
+      <p class="place">Calicéo – Cormeilles-en-Parisis 🧖‍♀️</p>
+      <p class="desc">
+        On termine la journée par trois heures de détente complète :
+        bains chauds, jacuzzis et relaxation pour finir cette journée
+        dans une ambiance calme et reposante.
+      </p>
+      <p class="mini">🧴 Maillot + serviette recommandés.</p>
+    </div>
+  </div>
 
-    details{
-      background: rgba(0,0,0,0.03);
-      border-radius:16px;
-      padding:12px 12px;
-      border: 1px solid rgba(0,0,0,0.05);
-      margin-bottom:10px;
-    }
-    details summary{
-      cursor:pointer;
-      font-weight:800;
-      color:#111;
-      padding:4px 2px;
-      list-style:none;
-    }
-    details summary::-webkit-details-marker{ display:none; }
-    .note{
-      margin:10px 2px 2px;
-      font-size:14px;
-      line-height:1.6;
-      opacity:.92;
-    }
+  <div class="quote">
+    “Une journée simple, douce… et entièrement pour nous.”
+  </div>
 
-    .check{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top:10px;
-    }
-    .check label{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      padding:10px 10px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(0,0,0,0.06);
-      font-size:14px;
-      line-height:1.5;
-    }
-    .check input{
-      margin-top:2px;
-      transform: scale(1.1);
-      accent-color: var(--pink);
-    }
-
-    .footer{
-      text-align:center;
-      margin-top:18px;
-      font-size:13px;
-      opacity:.85;
-    }
-
-    /* petits cœurs en fond */
-    .hearts{
-      position:fixed; inset:0; z-index:-1; pointer-events:none;
-    }
-    .heart{
-      position:absolute;
-      width:14px; height:14px;
-      transform: rotate(45deg);
-      opacity:.35;
-      animation: floatUp linear forwards;
-      background: rgba(255,255,255,0.9);
-      border-radius: 4px;
-    }
-    .heart::before, .heart::after{
-      content:"";
-      position:absolute;
-      width:14px; height:14px;
-      background: inherit;
-      border-radius:50%;
-    }
-    .heart::before{ left:-7px; top:0; }
-    .heart::after{ top:-7px; left:0; }
-    @keyframes floatUp{
-      from{ transform: translateY(20vh) rotate(45deg); }
-      to{ transform: translateY(-120vh) rotate(45deg); }
-    }
-
-    .btn{
-      display:inline-block;
-      border:none;
-      border-radius:14px;
-      padding:12px 16px;
-      font-size:14px;
-      cursor:pointer;
-      background: var(--pink);
-      color:#fff;
-      margin-top:10px;
-    }
-    .btn:active{ transform: scale(0.99); }
-
-    .small{
-      font-size:12px;
-      opacity:.8;
-      margin-top:6px;
-      min-height: 18px;
-    }
-
-    .quote{
-      margin-top:14px;
-      padding:14px 14px;
-      border-radius:18px;
-      background: rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.06);
-      font-style: italic;
-      line-he
+</div>
